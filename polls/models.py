@@ -15,6 +15,12 @@ class Question(models.Model):
         return now >= self.pub_date >= now - datetime.timedelta(days=1)
 
 
+    class Meta():
+        verbose_name='Вопрос'
+        verbose_name_plural = 'Вопросы'
+        ordering=['-pub_date']
+
+
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
@@ -23,3 +29,8 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+
+    class Meta():
+        verbose_name='Вариант ответа'
+        verbose_name_plural='Варианты ответов'

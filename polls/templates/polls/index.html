@@ -10,6 +10,7 @@
     {% for question in latest_question_list %}
         <li>
         	<a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+            <h4> Published {{ question.pub_date|date:'d-m-Y H:i' }}</h4>
         </li>
     {% endfor %}
     </ul>
